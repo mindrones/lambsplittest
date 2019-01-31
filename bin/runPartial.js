@@ -1,6 +1,6 @@
 #! /usr/bin/env node -r esm
 
-import * as _ from "../node_modules/lamb/dist/lamb.mjs";
+import * as _ from "lamb";
 
 const foo = (a, b, c) => a + b + c;
 const sumABto3 = _.partial(foo, [_._, _._, 3]);
