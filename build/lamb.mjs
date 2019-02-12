@@ -1,4 +1,4 @@
-var _ = {};
+var __ = {};
 
 function always (value) {
     return function () {
@@ -37,7 +37,7 @@ function partial (fn, args) {
         var argsLen = args.length;
         for (var i = 0, boundArg; i < argsLen; i++) {
             boundArg = args[i];
-            newArgs[i] = boundArg === _ ? arguments[lastIdx++] : boundArg;
+            newArgs[i] = boundArg === __ ? arguments[lastIdx++] : boundArg;
         }
         for (var len = arguments.length; lastIdx < len; lastIdx++) {
             newArgs[i++] = arguments[lastIdx];
@@ -49,7 +49,7 @@ function partial (fn, args) {
 function _makePartial3 (fn, shouldAritize) {
     return function (a, b) {
         var f = shouldAritize && arguments.length !== 2 ? binary(fn) : fn;
-        return partial(f, [_, a, b]);
+        return partial(f, [__, a, b]);
     };
 }
 
@@ -124,7 +124,7 @@ function partialRight (fn, args) {
         var newArgs = [];
         for (var i = argsLen - 1, boundArg; i > -1; i--) {
             boundArg = args[i];
-            boundArgs[i] = boundArg === _ ? arguments[lastIdx--] : boundArg;
+            boundArgs[i] = boundArg === __ ? arguments[lastIdx--] : boundArg;
         }
         for (i = 0; i <= lastIdx; i++) {
             newArgs[i] = arguments[i];
@@ -404,7 +404,7 @@ var index = _groupWith(function (a, b) {
 
 var indexBy = _curry2(index, true);
 
-var init = partial(slice, [_, 0, -1]);
+var init = partial(slice, [__, 0, -1]);
 
 function insert (arrayLike, index, element) {
     var result = slice(arrayLike, 0, arrayLike.length);
@@ -624,9 +624,9 @@ function sortedInsert (arrayLike, element, sorters) {
     return result;
 }
 
-var sorter = partial(_sorter, [_, false, _]);
+var sorter = partial(_sorter, [__, false, __]);
 
-var sorterDesc = partial(_sorter, [_, true, _]);
+var sorterDesc = partial(_sorter, [__, true, __]);
 
 var sortWith = _curry2(sort, true);
 
@@ -696,7 +696,7 @@ function updateAt (index, updater) {
     };
 }
 
-var updateIndex = partial(_setIndex, [_, _, null, _]);
+var updateIndex = partial(_setIndex, [__, __, null, __]);
 
 function zip (a, b) {
     return transpose([a, b]);
@@ -719,18 +719,18 @@ function _asPartial (fn, argsHolder) {
         var newArgs = [];
         for (var i = 0, len = argsHolder.length, boundArg; i < len; i++) {
             boundArg = argsHolder[i];
-            newArgs[i] = boundArg === _ && lastIdx < argsLen ? arguments[lastIdx++] : boundArg;
+            newArgs[i] = boundArg === __ && lastIdx < argsLen ? arguments[lastIdx++] : boundArg;
         }
         while (lastIdx < argsLen) {
             newArgs[i++] = arguments[lastIdx++];
         }
         for (i = 0; i < argsLen; i++) {
-            if (arguments[i] === _) {
+            if (arguments[i] === __) {
                 return _asPartial(fn, newArgs);
             }
         }
         for (i = 0, len = newArgs.length; i < len; i++) {
-            if (newArgs[i] === _) {
+            if (newArgs[i] === __) {
                 newArgs[i] = void 0;
             }
         }
@@ -863,7 +863,7 @@ function invoker (methodName) {
 }
 
 function invokerOn (target) {
-    return partial(_invoker, [[], _, target]);
+    return partial(_invoker, [[], __, target]);
 }
 
 function mapArgs (fn, mapper) {
@@ -1123,7 +1123,7 @@ function getPathIn (obj, path, separator) {
 
 function checker (predicate, message, keyPaths, pathSeparator) {
     return function (obj) {
-        var getValues = partial(getPathIn, [obj, _, pathSeparator]);
+        var getValues = partial(getPathIn, [obj, __, pathSeparator]);
         return predicate.apply(obj, map(keyPaths, getValues)) ? [] : [message, keyPaths];
     };
 }
@@ -1491,4 +1491,4 @@ function isType (typeName) {
     };
 }
 
-export { _, always, areSVZ, binary, clamp, clampWithin, compose, forEach, generic, identity, isNil, isNull, isSVZ, isUndefined, map, mapWith, partial, partialRight, reduce, reduceWith, slice, sliceAt, type, append, appendTo, contains, count, countBy, difference, drop, dropFrom, dropWhile, every, everyIn, filter, filterWith, find, findIndex, findWhere, findIndexWhere, flatMap, flatMapWith, flatten, getAt, getIndex, group, groupBy, head, index, indexBy, init, insert, insertAt, intersection, isIn, last, list, partition, partitionWith, pluck, pluckKey, pull, pullFrom, reduceRight, reduceRightWith, reverse, rotate, rotateBy, setAt, setIndex, shallowFlatten, some, someIn, sort, sortedInsert, sorter, sorterDesc, sortWith, tail, take, takeFrom, takeWhile, transpose, union, unionBy, uniques, uniquesBy, updateAt, updateIndex, zip, zipWithIndex, application, apply, applyTo, asPartial, aritize, collect, curry, curryable, curryableRight, curryRight, debounce, flip, getArgAt, invoker, invokerOn, mapArgs, pipe, tapArgs, throttle, unary, adapter, allOf, anyOf, areSame, case_ as case, condition, gt, gte, is, isGT, isGTE, isLT, isLTE, lt, lte, not, unless, when, add, deduct, divide, divideBy, generate, isFinite_ as isFinite, isInteger, isSafeInteger, modulo, multiply, multiplyBy, randomInt, range, remainder, subtract, sum, checker, enumerables, fromPairs, getIn, getKey, getPath, getPathIn, has, hasKey, hasOwn, hasOwnKey, hasKeyValue, hasPathValue, immutable, keys, keySatisfies, make, mapValues, mapValuesWith, merge, mergeOwn, ownPairs, ownValues, pairs, pathExists, pathExistsIn, pathSatisfies, pick, pickIf, pickKeys, rename, renameKeys, renameWith, setIn, setKey, setPath, setPathIn, skip, skipIf, skipKeys, tear, tearOwn, updateIn, updateKey, updatePath, updatePathIn, validate, validateWith, values, padLeft, padRight, repeat, testWith, isInstanceOf, isType };
+export { __, always, areSVZ, binary, clamp, clampWithin, compose, forEach, generic, identity, isNil, isNull, isSVZ, isUndefined, map, mapWith, partial, partialRight, reduce, reduceWith, slice, sliceAt, type, append, appendTo, contains, count, countBy, difference, drop, dropFrom, dropWhile, every, everyIn, filter, filterWith, find, findIndex, findWhere, findIndexWhere, flatMap, flatMapWith, flatten, getAt, getIndex, group, groupBy, head, index, indexBy, init, insert, insertAt, intersection, isIn, last, list, partition, partitionWith, pluck, pluckKey, pull, pullFrom, reduceRight, reduceRightWith, reverse, rotate, rotateBy, setAt, setIndex, shallowFlatten, some, someIn, sort, sortedInsert, sorter, sorterDesc, sortWith, tail, take, takeFrom, takeWhile, transpose, union, unionBy, uniques, uniquesBy, updateAt, updateIndex, zip, zipWithIndex, application, apply, applyTo, asPartial, aritize, collect, curry, curryable, curryableRight, curryRight, debounce, flip, getArgAt, invoker, invokerOn, mapArgs, pipe, tapArgs, throttle, unary, adapter, allOf, anyOf, areSame, case_ as case, condition, gt, gte, is, isGT, isGTE, isLT, isLTE, lt, lte, not, unless, when, add, deduct, divide, divideBy, generate, isFinite_ as isFinite, isInteger, isSafeInteger, modulo, multiply, multiplyBy, randomInt, range, remainder, subtract, sum, checker, enumerables, fromPairs, getIn, getKey, getPath, getPathIn, has, hasKey, hasOwn, hasOwnKey, hasKeyValue, hasPathValue, immutable, keys, keySatisfies, make, mapValues, mapValuesWith, merge, mergeOwn, ownPairs, ownValues, pairs, pathExists, pathExistsIn, pathSatisfies, pick, pickIf, pickKeys, rename, renameKeys, renameWith, setIn, setKey, setPath, setPathIn, skip, skipIf, skipKeys, tear, tearOwn, updateIn, updateKey, updatePath, updatePathIn, validate, validateWith, values, padLeft, padRight, repeat, testWith, isInstanceOf, isType };

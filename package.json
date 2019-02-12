@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "esm": "^3.1.4",
-    "lamb": "git://github.com/ascartabelli/lamb.git#68cd9287829eb975de8a7abaeec3a5c4aeee83ea"
+    "lamb": "^0.57.0"
   },
   "devDependencies": {
     "rollup": "^1.1.2",

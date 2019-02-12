@@ -1,4 +1,4 @@
-var _ = {};
+var __ = {};
 
 function areSVZ (a, b) {
     return a !== a ? b !== b : a === b;
@@ -31,7 +31,7 @@ function partial (fn, args) {
         var argsLen = args.length;
         for (var i = 0, boundArg; i < argsLen; i++) {
             boundArg = args[i];
-            newArgs[i] = boundArg === _ ? arguments[lastIdx++] : boundArg;
+            newArgs[i] = boundArg === __ ? arguments[lastIdx++] : boundArg;
         }
         for (var len = arguments.length; lastIdx < len; lastIdx++) {
             newArgs[i++] = arguments[lastIdx];
@@ -252,7 +252,7 @@ var _search = generic(String.prototype.search);
 const mapWithA = mapWith(getKey("a"));
 
 const split = generic(String.prototype.split);
-const splitBy = x => partial(split, [_, x]);
+const splitBy = x => partial(split, [__, x]);
 const splitByDot = splitBy(".");
 
 export { mapWithA, split, splitBy, splitByDot };

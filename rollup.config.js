@@ -26,6 +26,14 @@ export default [
         plugins
     },
     {
+        input: "./src/mapWith.js",
+        output: {
+            file: "build/mapWith.mjs",
+            format: "esm"
+        },
+        plugins
+    },
+    {
         input: "./src/mapper.js",
         output: {
             file: "build/mapper.mjs",

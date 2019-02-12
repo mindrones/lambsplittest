@@ -1,5 +1,3 @@
-var __ = {};
-
 function areSVZ (a, b) {
     return a !== a ? b !== b : a === b;
 }
@@ -19,25 +17,6 @@ function clamp (n, min, max) {
     } else {
         return n < min ? min : n > max ? max : n;
     }
-}
-
-function partial (fn, args) {
-    return function () {
-        if (!Array.isArray(args)) {
-            return fn.apply(this, arguments);
-        }
-        var lastIdx = 0;
-        var newArgs = [];
-        var argsLen = args.length;
-        for (var i = 0, boundArg; i < argsLen; i++) {
-            boundArg = args[i];
-            newArgs[i] = boundArg === __ ? arguments[lastIdx++] : boundArg;
-        }
-        for (var len = arguments.length; lastIdx < len; lastIdx++) {
-            newArgs[i++] = arguments[lastIdx];
-        }
-        return fn.apply(this, newArgs);
-    };
 }
 
 function identity (value) {
@@ -243,8 +222,6 @@ var hasOwn = generic(Object.prototype.hasOwnProperty);
 
 var _search = generic(String.prototype.search);
 
-const split = generic(String.prototype.split);
-const splitBy = x => partial(split, [__, x]);
-const splitByDot = splitBy(".");
+const mapWithA = mapWith(x => x.a);
 
-export { split, splitBy, splitByDot };
+export { mapWithA };
