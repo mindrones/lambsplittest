@@ -1,4 +1,4 @@
-import * as _ from "lamb";
+import * as _ from "./lamb/src/index";
 
 export const split = _.generic(String.prototype.split);
 

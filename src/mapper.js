@@ -1,3 +1,3 @@
-import * as _ from "lamb";
+import {mapWith, getKey} from "./lamb/src/index";
 
-export const mapWithA = _.mapWith(_.getKey("a"));
+export const mapWithA = mapWith(getKey("a"));

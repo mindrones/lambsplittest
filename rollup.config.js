@@ -18,7 +18,7 @@ export default [
         plugins
     },
     {
-        input: "./src/lamb.js",
+        input: "./src/lamb/src/index.js",
         output: {
             file: "build/lamb.mjs",
             format: "esm"
