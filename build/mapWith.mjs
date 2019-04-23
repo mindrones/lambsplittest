@@ -158,22 +158,6 @@ function flatMap (array, iteratee) {
 
 var flatMapWith = _curry2(flatMap, true);
 
-function _toNaturalIndex (idx, len) {
-    idx = _toInteger(idx);
-    return idx >= -len && idx < len ? idx < 0 ? idx + len : idx : NaN;
-}
-
-function getIndex (arrayLike, index) {
-    var idx = _toNaturalIndex(index, _toArrayLength(arrayLike.length));
-    return idx === idx ? arrayLike[idx] : void 0;
-}
-
-var getAt = _curry2(getIndex, true);
-
-var head = getAt(0);
-
-var last = getAt(-1);
-
 function _argsToArrayFrom (idx) {
     return function () {
         var argsLen = arguments.length || idx;
@@ -187,8 +171,6 @@ function _argsToArrayFrom (idx) {
 }
 
 var list = _argsToArrayFrom(0);
-
-var tail = drop(1);
 
 function _makeTypeErrorFor (value, desiredType) {
     return new TypeError("Cannot convert " + type(value).toLowerCase() + " to " + desiredType);
@@ -213,8 +195,6 @@ function unionBy (iteratee) {
 }
 
 var union = unionBy(identity);
-
-var zipWithIndex = mapWith(binary(list));
 
 var _isOwnEnumerable = generic(Object.prototype.propertyIsEnumerable);
 
