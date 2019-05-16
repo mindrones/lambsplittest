@@ -15,6 +15,9 @@ export default [
             file: "build/index.mjs",
             format: "esm"
         },
+        treeshake: {
+          moduleSideEffects: false
+        },
         plugins
     },
     {
@@ -22,6 +25,9 @@ export default [
         output: {
             file: "build/lamb.mjs",
             format: "esm"
+        },
+        treeshake: {
+          moduleSideEffects: false
         },
         plugins
     },
@@ -31,6 +37,9 @@ export default [
             file: "build/mapWith.mjs",
             format: "esm"
         },
+        treeshake: {
+          moduleSideEffects: false
+        },
         plugins
     },
     {
@@ -38,6 +47,9 @@ export default [
         output: {
             file: "build/mapper.mjs",
             format: "esm"
+        },
+        treeshake: {
+          moduleSideEffects: false
         },
         plugins
     },
@@ -48,7 +60,10 @@ export default [
             format: "esm"
         },
         plugins,
-        treeshake: {propertyReadSideEffects: false}
+        treeshake: {
+          moduleSideEffects: false,
+          propertyReadSideEffects: false
+        }
     },
     {
         input: "./src/mapper.js",
@@ -57,13 +72,19 @@ export default [
             format: "esm"
         },
         plugins,
-        treeshake: {pureExternalModules: true}
+        treeshake: {
+          moduleSideEffects: false,
+          pureExternalModules: true
+        }
     },
     {
         input: "./src/splitter.js",
         output: {
             file: "build/splitter.mjs",
             format: "esm"
+        },
+        treeshake: {
+          moduleSideEffects: false
         },
         plugins
     },
